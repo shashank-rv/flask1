@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 from forms import RegistrationForm,LoginForm
 app = Flask(__name__)
 
@@ -28,7 +28,7 @@ def home():
 def about():
  return render_template('about.html',title = 'alpha')
 
-@app.route("/register")
+@app.route("/register", methods = ['GET','POST'])
 def register():
     form = RegistrationForm()
     return render_template('register.html',title = 'Register', form = form)
@@ -38,6 +38,8 @@ def login():
     form = LoginForm()
     return render_template('login.html',title = 'Register', form = form)
 
+
 if __name__ == "__main__":
     app.run(debug=True)
+
 
